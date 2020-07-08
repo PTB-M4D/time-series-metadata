@@ -1,0 +1,10 @@
+# Testing artifacts
+test-results/
+
+# Packaging artifacts
+*.egg-info/
+
+
+# Doc artifacts
+docs/_build
+docs/README.md
