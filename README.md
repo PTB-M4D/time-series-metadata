@@ -79,17 +79,14 @@ vs_description = MetaData(
 
 ### Read out metadata
 
-You can access previously provided metadata in several ways.
-
-#### Read out metadata
-
-You can access the whole metadata set or time and quantity metadata separately.
-Quantity metadata can be either accessed for all quantities or individually via index
- or name.
+You can access the metadata as a whole or time and quantity metadata separately.
+Quantity metadata can be either accessed for all quantities at once or individually via index
+or name. If you do not specify name or index, the first's quantity metadata is returned.
+This might be especially convenient, if there is only one quantity.
 
 ```python
 >>> vs_description.metadata
-{'device_id': 'my_virtual_sensor', 'time_name': 'time', 'time_unit': 's', 'quantity_names': ['pressure'], 'quantity_units': ['Pa'], 'misc': None}
+{"device_id": "my_virtual_sensor", "time_name": "time", "time_unit": "s", "quantity_names": ["pressure_1", "pressure_2"], "quantity_units": ["Pa", "mPa"], "misc": None}
 >>> vs_description.time
 {'time_name': 'time', 'time_unit': 's'}
 >>> vs_description.quantities
@@ -97,6 +94,8 @@ Quantity metadata can be either accessed for all quantities or individually via 
 >>> vs_description.get_quantity(1)
 {'quantity_names': 'pressure_2', 'quantity_units': 'mPa'}
 >>> vs_description.get_quantity(name="pressure_1")
+{'quantity_names': 'pressure_1', 'quantity_units': 'Pa'}
+>>> vs_description.get_quantity()
 {'quantity_names': 'pressure_1', 'quantity_units': 'Pa'}
 ```
 
