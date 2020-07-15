@@ -60,7 +60,7 @@ class MetaData:
 
     @property
     def quantities(self) -> Dict:
-        """Return the metadata for one of the quantities
+        """Return all quantities metadata
 
         Returns
         -------
