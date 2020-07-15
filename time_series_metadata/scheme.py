@@ -96,11 +96,11 @@ class MetaData:
 
         Parameters
         ----------
-        index : int or str
+        index : int, optional
             Index of the quantity in the initial tuple (default = 0). If `name` is
             set, `index` is ignored.
         name : str, optional
-            Index or name of the quantity. If `name` is set, `index` is ignored.
+            Name of the quantity. If `name` is set, `index` is ignored.
 
         Returns
         -------
