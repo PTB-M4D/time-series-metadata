@@ -1,2 +1,0 @@
--r dev-requirements.in
-python-semantic-release<5.1
