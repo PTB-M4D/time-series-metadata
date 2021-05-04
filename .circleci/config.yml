@@ -107,10 +107,6 @@ workflows:
     jobs:
       # Create 'test' job to test and install for every commit.
       - test:
-          name: "test_python3.5"
-          tag: "3.5"
-          pyenv: "py35"
-      - test:
           name: "test_python3.6"
           tag: "3.6"
           pyenv: "py36"
@@ -126,7 +122,6 @@ workflows:
           # Test the 'release' job to avoid trouble when Pull Requests get merged and
           # to preview publishing actions and the new changelog.
           requires:
-            - test_python3.5
             - test_python3.6
             - test_python3.7
             - test_python3.8
@@ -146,7 +141,9 @@ workflows:
           # decision and publish it on GitHub and PyPI.org. This requires manual
           # approval in the previous step, which is only triggered on branch master,
           # thus this job here is triggered only on master as well.
-          context: pypi.org publishing for time-series-metadata
+          context:
+            - pypi.org publishing for time-series-metadata
+            - GitHub pushes to BjoernLudwigPTB's public_repos
           requires:
             - confirm_previewed_release_actions
 
