@@ -1,8 +1,8 @@
 # time-series-metadata
 
-[![CircleCI](https://circleci.com/gh/PTB-PSt1/time-series-metadata.svg?style=shield)](https://circleci.com/gh/PTB-PSt1/time-series-metadata)
-[![Documentation Status](https://readthedocs.org/projects/time-series-metadata/badge/?version=latest)](https://time-series-metadata.readthedocs.io/en/latest/?badge=latest)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3935860.svg)](https://doi.org/10.5281/zenodo.3935860)
+[![CircleCI](https://circleci.com/gh/PTB-M4D/time-series-metadata.svg?style=shield)](https://circleci.com/gh/PTB-M4D/time-series-metadata)
+[![Documentation Status](https://readthedocs.org/projects/time-series-metadata/badge/?version=latest)](https://time-series-metadata.readthedocs.io/en/latest/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3935860.svg)](https://doi.org/10.5281/zenodo.3935859)
 
 
 ## A metrologically enabled time-series metadata scheme
