@@ -27,18 +27,17 @@ fi
 # environments and update the according two requirements files by issuing the
 # according pip-tools command pip-compile from within the specific environments.
 export PYTHONPATH=$PYTHONPATH:$(pwd)
-for PYVENV in "6" "7" "8"
+for PYVENV in "7" "8" "9" "10"
 do
     echo "
-Compile dependencies for Python3.$PYVENV
-==================================
+Compile dependencies for Python 3.$PYVENV
+====================================
     "
     # Activate according Python environment.
     source ../envs/time-series-metadata-3.$PYVENV/bin/activate && \
-    python -m pip install --upgrade pip pip-tools && \
+    python -m pip install --upgrade pip==21.3.0 pip-tools && \
     # Create dev-requirements...txt from dev-requirements...in.
     python -m piptools compile --upgrade requirements/dev-requirements.in \
     --output-file requirements/dev-requirements-py3$PYVENV.txt && \
-    python -m piptools sync requirements/dev-requirements-py3$PYVENV.txt && \
     deactivate
 done
