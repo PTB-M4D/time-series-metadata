@@ -241,10 +241,9 @@ jobs:
             source << parameters.pyenv >>/bin/activate
             python -m pip install --upgrade tox pip-tools
             python -m piptools compile --upgrade \
-              requirements/dev-requirements-<< parameters.pyenv >>.in \
+              requirements/dev-requirements.in \
               --output-file requirements/dev-requirements-<< parameters.pyenv >>.txt
             python -m piptools sync \
-              requirements/requirements-<< parameters.pyenv >>.txt \
               requirements/dev-requirements-<< parameters.pyenv >>.txt
       - tox:
           pyenv: << parameters.pyenv >>
