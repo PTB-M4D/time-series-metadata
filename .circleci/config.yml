@@ -238,7 +238,7 @@ jobs:
       - run:
           name: Recompile and sync deps
           command: |
-            source venv/bin/activate
+            source << parameters.pyenv >>/bin/activate
             python -m pip install --upgrade tox pip-tools
             python -m piptools compile --upgrade \
               requirements/dev-requirements-<< parameters.pyenv >>.in \
