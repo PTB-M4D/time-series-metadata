@@ -46,31 +46,31 @@ executors:
 workflows:
 
   check_for_upgraded_deps:
-#    triggers:
-#      - schedule:
-#          cron: "0 0 1 * *"
-#          filters:
-#            branches:
-#              only: /master/
+    triggers:
+      - schedule:
+          cron: "0 0 1 * *"
+          filters:
+            branches:
+              only: /main/
     jobs:
-#      - test_with_updated_deps:
-#          name: "test_with_updated_deps_py37"
-#          tag: "3.7"
-#          pyenv: "py37"
-#          context:
-#            - Docker publishing as bludoc
-#      - test_with_updated_deps:
-#          name: "test_with_updated_deps_py38"
-#          tag: "3.8"
-#          pyenv: "py38"
-#          context:
-#            - Docker publishing as bludoc
-#      - test_with_updated_deps:
-#          name: "test_with_updated_deps_py39"
-#          tag: "3.9"
-#          pyenv: "py39"
-#          context:
-#            - Docker publishing as bludoc
+      - test_with_updated_deps:
+          name: "test_with_updated_deps_py37"
+          tag: "3.7"
+          pyenv: "py37"
+          context:
+            - Docker publishing as bludoc
+      - test_with_updated_deps:
+          name: "test_with_updated_deps_py38"
+          tag: "3.8"
+          pyenv: "py38"
+          context:
+            - Docker publishing as bludoc
+      - test_with_updated_deps:
+          name: "test_with_updated_deps_py39"
+          tag: "3.9"
+          pyenv: "py39"
+          context:
+            - Docker publishing as bludoc
       - test_with_updated_deps:
           name: "test_with_updated_deps_py310"
           tag: "3.10"
@@ -79,72 +79,72 @@ workflows:
             - Docker publishing as bludoc
       - commit_push_open_pr:
           requires:
-#            - test_with_updated_deps_py37
-#            - test_with_updated_deps_py38
-#            - test_with_updated_deps_py39
+            - test_with_updated_deps_py37
+            - test_with_updated_deps_py38
+            - test_with_updated_deps_py39
             - test_with_updated_deps_py310
           context:
             - Docker publishing as bludoc
             - GitHub pushes to BjoernLudwigPTB's public_repos
 
-#  test_and_deploy:
-#    jobs:
-#      - test:
-#          name: "test_python3.7"
-#          tag: "3.7"
-#          pyenv: "py37"
-#          context:
-#            - Docker publishing as bludoc
-#      - test:
-#          name: "test_python3.8"
-#          tag: "3.8"
-#          pyenv: "py38"
-#          context:
-#            - Docker publishing as bludoc
-#      - test:
-#          name: "test_python3.9"
-#          tag: "3.9"
-#          pyenv: "py39"
-#          context:
-#            - Docker publishing as bludoc
-#      - test:
-#          name: "test_python3.10"
-#          tag: "3.10"
-#          pyenv: "py310"
-#          context:
-#            - Docker publishing as bludoc
-#      - preview_release:
-#          # Test the 'release' job to avoid trouble when Pull Requests get merged and
-#          # to preview publishing actions and the new changelog.
-#          requires:
-#            - test_python3.7
-#            - test_python3.8
-#            - test_python3.9
-#            - test_python3.10
-#          context:
-#            - Docker publishing as bludoc
-#      - confirm_previewed_release_actions:
-#          # This job allows for checking that the release we will create in the
-#          # next step actually is the desired release, by observing the result of
-#          # preview_release.
-#          type: approval
-#          requires:
-#            - preview_release
-#          filters:
-#            branches:
-#              # This assures the job only being triggered on branch master.
-#              only: /master/
-#      - release:
-#          # Job to potentially create a release based on python-semantic-release's
-#          # decision and publish it on GitHub and PyPI.org. This requires manual
-#          # approval in the previous step, which is only triggered on branch master,
-#          # thus this job here is triggered only on master as well.
-#          context:
-#            - pypi.org publishing for time-series-metadata
-#            - GitHub pushes to BjoernLudwigPTB's public_repos
-#            - Docker publishing as bludoc
-#          requires:
-#            - confirm_previewed_release_actions
+  test_and_deploy:
+    jobs:
+      - test:
+          name: "test_python3.7"
+          tag: "3.7"
+          pyenv: "py37"
+          context:
+            - Docker publishing as bludoc
+      - test:
+          name: "test_python3.8"
+          tag: "3.8"
+          pyenv: "py38"
+          context:
+            - Docker publishing as bludoc
+      - test:
+          name: "test_python3.9"
+          tag: "3.9"
+          pyenv: "py39"
+          context:
+            - Docker publishing as bludoc
+      - test:
+          name: "test_python3.10"
+          tag: "3.10"
+          pyenv: "py310"
+          context:
+            - Docker publishing as bludoc
+      - preview_release:
+          # Test the 'release' job to avoid trouble when Pull Requests get merged and
+          # to preview publishing actions and the new changelog.
+          requires:
+            - test_python3.7
+            - test_python3.8
+            - test_python3.9
+            - test_python3.10
+          context:
+            - Docker publishing as bludoc
+      - confirm_previewed_release_actions:
+          # This job allows for checking that the release we will create in the
+          # next step actually is the desired release, by observing the result of
+          # preview_release.
+          type: approval
+          requires:
+            - preview_release
+          filters:
+            branches:
+              # This assures the job only being triggered on branch master.
+              only: /master/
+      - release:
+          # Job to potentially create a release based on python-semantic-release's
+          # decision and publish it on GitHub and PyPI.org. This requires manual
+          # approval in the previous step, which is only triggered on branch master,
+          # thus this job here is triggered only on master as well.
+          context:
+            - pypi.org publishing for time-series-metadata
+            - GitHub pushes to BjoernLudwigPTB's public_repos
+            - Docker publishing as bludoc
+          requires:
+            - confirm_previewed_release_actions
 
 
 commands:
