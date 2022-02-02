@@ -132,13 +132,13 @@ workflows:
             - preview_release
           filters:
             branches:
-              # This assures the job only being triggered on branch master.
-              only: /master/
+              # This assures the job only being triggered on branch main.
+              only: /main/
       - release:
           # Job to potentially create a release based on python-semantic-release's
           # decision and publish it on GitHub and PyPI.org. This requires manual
-          # approval in the previous step, which is only triggered on branch master,
-          # thus this job here is triggered only on master as well.
+          # approval in the previous step, which is only triggered on branch main,
+          # thus this job here is triggered only on main as well.
           context:
             - pypi.org publishing for time-series-metadata
             - GitHub pushes to BjoernLudwigPTB's public_repos
@@ -300,7 +300,7 @@ jobs:
           name: Open PR
           command: |
             set +e
-            gh pr create --base master --title "Update deps" \
+            gh pr create --base main --title "Update deps" \
               --body "This PR provides recompiled deps for all outdated package \
               versions. It was opened after the commited deps were succesfully \
               compiled and all tests passed with the new versions. It should be \
