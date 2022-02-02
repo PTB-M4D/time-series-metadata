@@ -247,6 +247,7 @@ jobs:
               requirements/dev-requirements-<< parameters.pyenv >>.txt
       - tox:
           pyenv: << parameters.pyenv >>
+
       - store_results
 
       - persist_to_workspace:
@@ -270,9 +271,18 @@ jobs:
             git config --global user.email "bjoern.ludwig@ptb.de"
             NEW_BRANCH=recompile_deps
             git checkout -b ${NEW_BRANCH}
-            git commit -am \
-              "build(deps): recompile Python (dev) deps"
-            git push -u origin  ${NEW_BRANCH}
+            git add .
+            set +e
+            git status | grep modified
+            if [ $? -eq 0 ]; then
+                set -e
+                git commit -am \
+                  "build(deps): recompile Python dev deps"
+                git push -fu origin  ${NEW_BRANCH}
+            else
+                set -e
+                echo "Nothing to commit. No updated deps."
+            fi
 
       - run:
           name: Install GitHub CLI
@@ -289,6 +299,7 @@ jobs:
       - run:
           name: Open PR
           command: |
+            set +e
             gh pr create --base master --title "Update deps" \
               --body "This PR provides recompiled deps for all outdated package \
               versions. It was opened after the commited deps were succesfully \
