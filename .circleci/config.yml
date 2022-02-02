@@ -56,25 +56,25 @@ workflows:
 #      - test_with_updated_deps:
 #          name: "test_with_updated_deps_py37"
 #          tag: "3.7"
-#          toxenvs: "py37"
+#          pyenv: "py37"
 #          context:
 #            - Docker publishing as bludoc
 #      - test_with_updated_deps:
 #          name: "test_with_updated_deps_py38"
 #          tag: "3.8"
-#          toxenvs: "py38"
+#          pyenv: "py38"
 #          context:
 #            - Docker publishing as bludoc
 #      - test_with_updated_deps:
 #          name: "test_with_updated_deps_py39"
 #          tag: "3.9"
-#          toxenvs: "py39"
+#          pyenv: "py39"
 #          context:
 #            - Docker publishing as bludoc
       - test_with_updated_deps:
           name: "test_with_updated_deps_py310"
           tag: "3.10"
-          toxenvs: "py310"
+          pyenv: "py310"
           context:
             - Docker publishing as bludoc
       - commit_push_open_pr:
@@ -225,7 +225,7 @@ jobs:
       tag:
         type: string
         default: "3.10"
-      toxenvs:
+      pyenv:
         type: string
         default: "py310"
       posargs:
@@ -237,30 +237,28 @@ jobs:
       tag: << parameters.tag >>
 
     steps:
-      - create_result_folder
-      - create_venv
+      - create_folders_and_venv
+          pyenv: << parameters.pyenv >>
       - run:
           name: Recompile and sync deps
           command: |
             source venv/bin/activate
             python -m pip install --upgrade tox pip-tools
             python -m piptools compile --upgrade \
-              --output-file requirements/requirements-<< parameters.toxenvs >>.txt
-            python -m piptools compile --upgrade \
-              requirements/dev-requirements-<< parameters.toxenvs >>.in \
-              --output-file requirements/dev-requirements-<< parameters.toxenvs >>.txt
+              requirements/dev-requirements-<< parameters.pyenv >>.in \
+              --output-file requirements/dev-requirements-<< parameters.pyenv >>.txt
             python -m piptools sync \
-              requirements/requirements-<< parameters.toxenvs >>.txt \
-              requirements/dev-requirements-<< parameters.toxenvs >>.txt
+              requirements/requirements-<< parameters.pyenv >>.txt \
+              requirements/dev-requirements-<< parameters.pyenv >>.txt
       - tox:
-          toxenvs: << parameters.toxenvs >>
+          pyenv: << parameters.pyenv >>
       - store_results
 
       - persist_to_workspace:
           root: .
           paths:
-            - requirements/requirements-<< parameters.toxenvs >>.txt
-            - requirements/dev-requirements-<< parameters.toxenvs >>.txt
+            - requirements/requirements-<< parameters.pyenv >>.txt
+            - requirements/dev-requirements-<< parameters.pyenv >>.txt
 
   commit_push_open_pr:
     executor:
