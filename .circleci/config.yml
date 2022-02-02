@@ -235,7 +235,6 @@ jobs:
 
     steps:
       - create_folders_and_venv
-          pyenv: << parameters.pyenv >>
       - run:
           name: Recompile and sync deps
           command: |
