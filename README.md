@@ -17,7 +17,7 @@ German research project [FAMOUS](https://famous-project.eu).
 
 *time-series-metadata* is written in Python 3 and strives to run with
 [all Python versions with upstream support](https://devguide.python.org/#status-of-python-branches).
-Currently it is tested to work with Python 3.5 to 3.8.
+Currently, it is tested to work with Python 3.7 to 3.10.
 
 ## Scheme
 
@@ -27,7 +27,7 @@ The following image illustrates an abstract representation of a time series:
  
 The scheme contains all metadata to interpret the actual time and quantity values.
 
-It is comprised of a dictionary containing the following keys with (default) values of
+It consists of a dictionary containing the following keys with (default) values of
 the specified type:
 
 ```python
