@@ -1,0 +1,31 @@
+{
+  "upload_type": "software",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Ludwig, Björn",
+      "affiliation": "Physikalisch-Technische Bundesanstalt",
+      "orcid": "0000-0002-5910-9137"
+    },
+    {
+      "name": "Gruber, Maximilian",
+      "affiliation": "Physikalisch-Technische Bundesanstalt",
+      "orcid": "0000-0002-3718-7919"
+    }
+  ],
+  "license": {
+    "id": "LGPL-3.0+",
+    "title": "GNU Lesser General Public License v3.0 or later",
+    "url": "https://opensource.org/licenses/LGPL-3.0"
+  },
+  "keywords": [
+    "Python",
+    "measurements",
+    "measurement uncertainty",
+    "Physikalisch-Technische Bundesanstalt",
+    "time series",
+    "metadata",
+    "metrology software"
+  ],
+  "language": "eng"
+}
