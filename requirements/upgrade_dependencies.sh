@@ -10,7 +10,7 @@
 # setup.py and the development dependencies into the dev-requirements.in-file.
 # Actually since at the moment we do not have production dependencies, the
 # install_requires section does not get compiled into its own requirements file.
-# Refer to github.com/PTB-PSt1/PyDynamic for a draft how to include this compilation
+# Refer to github.com/PTB-M4D/PyDynamic for a draft how to include this compilation
 # step into this script, once it gets relevant.
 # For execution the script needs virtual environments, one for each of the upstream
 # supported Python versions, with pip-tools installed. Those environments need to be

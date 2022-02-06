@@ -10,7 +10,7 @@ joint European Research Project
 `FAMOUS <https://famous-project.eu>`_.
 
 For the *time-series-metadata* homepage go to
-`GitHub <https://github.com/PTB-PSt1/time-series-metadata>`_.
+`GitHub <https://github.com/PTB-M4D/time-series-metadata>`_.
 
 *time-series-metadata* is written in Python 3 and strives to run with
 `all Python versions with upstream support <https://devguide.python

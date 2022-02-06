@@ -15,8 +15,8 @@ setuptools.setup(
     "for time-series with measurement uncertainties.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/PTB-PSt1/time-series-metadata",
-    download_url="https://github.com/PTB-PSt1/time-series-metadata/releases/download/"
+    url="https://github.com/PTB-M4D/time-series-metadata",
+    download_url="https://github.com/PTB-M4D/time-series-metadata/releases/download/"
     "v{0}/time-series-metadata-{0}.tar.gz".format(version),
     packages=setuptools.find_packages(exclude=["tests"]),
     keywords="metadata time-series uncertainty metrology",
@@ -24,10 +24,10 @@ setuptools.setup(
         "Documentation": "https://time-series-metadata.readthedocs.io/en/v{}/".format(
             version
         ),
-        "Source": "https://github.com/PTB-PSt1/time-series-metadata/tree/v{}/".format(
+        "Source": "https://github.com/PTB-M4D/time-series-metadata/tree/v{}/".format(
             version
         ),
-        "Tracker": "https://github.com/PTB-PSt1/time-series-metadata/issues",
+        "Tracker": "https://github.com/PTB-M4D/time-series-metadata/issues",
     },
     classifiers=[
         "Topic :: Utilities",
