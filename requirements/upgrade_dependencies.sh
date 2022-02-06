@@ -35,7 +35,7 @@ Compile dependencies for Python 3.$PYVENV
     "
     # Activate according Python environment.
     source ../envs/time-series-metadata-3.$PYVENV/bin/activate && \
-    python -m pip install --upgrade pip==21.3.0 pip-tools && \
+    python -m pip install --upgrade pip pip-tools && \
     # Create dev-requirements...txt from dev-requirements...in.
     python -m piptools compile --upgrade requirements/dev-requirements.in \
     --output-file requirements/dev-requirements-py3$PYVENV.txt && \
