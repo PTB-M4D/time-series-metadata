@@ -171,7 +171,7 @@ commands:
         command: |
           python3 -m venv << parameters.pyenv >>
           source << parameters.pyenv >>/bin/activate
-          pip install --upgrade pip==21.3.0 setuptools
+          pip install --upgrade pip setuptools
 
   # Reusable command to install development dependencies.
   install__development_deps:
