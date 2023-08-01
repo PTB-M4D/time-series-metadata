@@ -1,6 +1,0 @@
-pytest
-python-semantic-release
-tox
-sphinx
-sphinx-rtd-theme
-recommonmark

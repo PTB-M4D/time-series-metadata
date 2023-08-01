@@ -29,6 +29,16 @@ setuptools.setup(
         ),
         "Tracker": "https://github.com/PTB-M4D/time-series-metadata/issues",
     },
+    extras_require={
+        "dev": [
+            "pytest",
+            "python-semantic-release",
+            "tox",
+            "sphinx",
+            "sphinx-rtd-theme",
+            "recommonmark",
+        ],
+    },
     classifiers=[
         "Topic :: Utilities",
         "Topic :: Scientific/Engineering",
@@ -38,12 +48,12 @@ setuptools.setup(
         "License :: OSI Approved :: GNU Lesser General Public License v3 or later ("
         "LGPLv3+)",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Operating System :: OS Independent",
         "Typing :: Typed",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.8",
 )
