@@ -380,9 +380,12 @@ jobs:
             source ${PYENV}/bin/activate
             git config --global user.name "semantic-release (via CircleCI)"
             git config --global user.email "bjoern.ludwig@ptb.de"
-            semantic-release version
-            twine upload dist/*
-            semantic-release publish
+            if semantic-release --strict version; then
+                twine upload dist/*
+                semantic-release publish
+            else
+                circleci-agent step halt
+            fi
 
   preview_release:
     executor:
