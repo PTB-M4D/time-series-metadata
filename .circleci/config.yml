@@ -271,7 +271,6 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - requirements/requirements-<< parameters.pyenv >>.txt
             - requirements/dev-requirements-<< parameters.pyenv >>.txt
 
   commit_push_open_pr:
