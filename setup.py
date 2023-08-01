@@ -33,10 +33,11 @@ setuptools.setup(
         "dev": [
             "pytest",
             "python-semantic-release",
-            "tox",
+            "recommonmark",
             "sphinx",
             "sphinx-rtd-theme",
-            "recommonmark",
+            "tox",
+            "twine",
         ],
     },
     classifiers=[
