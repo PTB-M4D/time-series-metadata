@@ -17,7 +17,7 @@ German research project [FAMOUS](https://famous-project.eu).
 
 *time-series-metadata* is written in Python 3 and strives to run with
 [all Python versions with upstream support](https://devguide.python.org/#status-of-python-branches).
-Currently, it is tested to work with Python 3.7 to 3.10.
+Currently, it is tested to work with Python 3.8 to 3.11.
 
 ## Scheme
 

@@ -52,12 +52,6 @@ workflows:
         - equal: [ "Recompile and test deps", << pipeline.schedule.name >> ]
     jobs:
       - test_with_updated_deps:
-          name: "test_with_updated_deps_py37"
-          tag: "3.7"
-          pyenv: "py37"
-          context:
-            - Docker publishing as bludoc
-      - test_with_updated_deps:
           name: "test_with_updated_deps_py38"
           tag: "3.8"
           pyenv: "py38"
@@ -75,12 +69,18 @@ workflows:
           pyenv: "py310"
           context:
             - Docker publishing as bludoc
+      - test_with_updated_deps:
+          name: "test_with_updated_deps_py311"
+          tag: "3.11"
+          pyenv: "py311"
+          context:
+            - Docker publishing as bludoc
       - commit_push_open_pr:
           requires:
-            - test_with_updated_deps_py37
             - test_with_updated_deps_py38
             - test_with_updated_deps_py39
             - test_with_updated_deps_py310
+            - test_with_updated_deps_py311
           context:
             - Docker publishing as bludoc
             - GitHub pushes to BjoernLudwigPTB's public_repos
@@ -90,12 +90,6 @@ workflows:
       not:
         equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
     jobs:
-      - test:
-          name: "test_python3.7"
-          tag: "3.7"
-          pyenv: "py37"
-          context:
-            - Docker publishing as bludoc
       - test:
           name: "test_python3.8"
           tag: "3.8"
@@ -114,14 +108,20 @@ workflows:
           pyenv: "py310"
           context:
             - Docker publishing as bludoc
+      - test:
+          name: "test_python3.11"
+          tag: "3.11"
+          pyenv: "py311"
+          context:
+            - Docker publishing as bludoc
       - preview_release:
           # Test the 'release' job to avoid trouble when Pull Requests get merged and
           # to preview publishing actions and the new changelog.
           requires:
-            - test_python3.7
             - test_python3.8
             - test_python3.9
             - test_python3.10
+            - test_python3.11
           context:
             - Docker publishing as bludoc
       - confirm_previewed_release_actions:
